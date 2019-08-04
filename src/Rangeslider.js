@@ -41,7 +41,7 @@ class Slider extends Component {
     onChangeStart: PropTypes.func,
     onChange: PropTypes.func,
     onChangeComplete: PropTypes.func
-  };
+  }
 
   static defaultProps = {
     min: 0,
@@ -53,7 +53,7 @@ class Slider extends Component {
     reverse: false,
     labels: {},
     handleLabel: ''
-  };
+  }
 
   constructor (props, context) {
     super(props, context)
@@ -298,15 +298,15 @@ class Slider extends Component {
     const coords = this.coordinates(position)
     const fillStyle = { [dimension]: `${coords.fill}px` }
     const handleStyle = { [direction]: `${coords.handle}px` }
-    let showTooltip = tooltip && active
+    const showTooltip = tooltip && active
 
-    let labelItems = []
+    const labelItems = []
     let labelKeys = Object.keys(labels)
 
     if (labelKeys.length > 0) {
       labelKeys = labelKeys.sort((a, b) => (reverse ? a - b : b - a))
 
-      for (let key of labelKeys) {
+      for (const key of labelKeys) {
         const labelPosition = this.getPositionFromValue(key)
         const labelCoords = this.coordinates(labelPosition)
         const labelStyle = { [direction]: `${labelCoords.label}px` }
@@ -366,7 +366,7 @@ class Slider extends Component {
                 this.tooltip = st
               }}
               className='rangeslider__handle-tooltip'
-              >
+            >
               <span>{this.handleFormat(value)}</span>
             </div>
             : null}

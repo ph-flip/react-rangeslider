@@ -1,10 +1,10 @@
-'use strict'
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlPlugin = require('html-webpack-plugin')
+const autoprefixer = require('autoprefixer')
+const path = require('path')
+const webpack = require('webpack')
 
-var path = require('path')
-var webpack = require('webpack')
-var ExtractPlugin = require('extract-text-webpack-plugin')
-var HtmlPlugin = require('html-webpack-plugin')
-var config = {
+const config = {
   devtool: '#cheap-eval-source-map',
 
   entry: process.env.NODE_ENV === 'development'
@@ -15,24 +15,48 @@ var config = {
     : path.join(__dirname, 'index'),
 
   output: {
-    path: process.env.NODE_ENV === 'development' ? __dirname : 'public',
-    publicPath: process.env.NODE_ENV === 'development' ? '/static/' : '',
+    path: process.env.NODE_ENV === 'development' ? __dirname : path.join(__dirname, 'public'),
+    publicPath: process.env.NODE_ENV === 'development' ? path.join(__dirname, '/static/') : '',
     filename: 'bundle.js'
   },
 
   resolve: {
-    extensions: ['', '.js', '.css', '.less'],
+    extensions: ['.js', '.css', '.less'],
     alias: {
       'react-rangeslider': path.join(__dirname, '../src/index.js')
     }
   },
 
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        loader: 'babel'
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              [
+                '@babel/preset-env',
+                {
+                  targets: {
+                    browsers: [
+                      'last 2 versions'
+                    ]
+                  }
+                }
+              ],
+              // '@babel/preset-env', // https://goo.gl/aAxYAq
+              '@babel/preset-react' // https://goo.gl/4aEFV3
+            ],
+
+            // https://goo.gl/N9gaqc - List of Babel plugins.
+            plugins: [
+              '@babel/plugin-proposal-object-rest-spread', // https://goo.gl/LCHWnP
+              '@babel/plugin-proposal-class-properties' // https://goo.gl/TE6TyG
+            ]
+          }
+        }
       },
       {
         test: /\.css$/,
@@ -50,6 +74,25 @@ var config = {
         options: {
           limit: 25000
         }
+      },
+      {
+        test: /\.less$/,
+        exclude: /node_modules/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [{
+            loader: 'css-loader',
+            options: { importLoaders: 1 }
+          }, {
+            loader: 'postcss-loader',
+            options: {
+              plugins: () => [autoprefixer]
+            }
+          },
+          {
+            loader: 'less-loader'
+          }]
+        })
       }
     ]
   },
@@ -65,12 +108,8 @@ var config = {
 
 // Dev config
 if (process.env.NODE_ENV === 'development') {
-  config.module.loaders.push({
-    test: /\.less$/,
-    exclude: /node_modules/,
-    loader: 'style!css!less'
-  })
-  config.plugins.push(
+  config.plugins = [
+    ...config.plugins,
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('development')
@@ -78,40 +117,28 @@ if (process.env.NODE_ENV === 'development') {
     }),
     new webpack.NoErrorsPlugin(),
     new webpack.HotModuleReplacementPlugin()
-  )
+  ]
 }
 
 // Build config
 if (process.env.NODE_ENV === 'production') {
-  config.module.loaders.push([
-    {
-      test: /\.less$/,
-      exclude: /node_modules/,
-      loader: ExtractPlugin.extract('style-loader', 'css-loader!less-loader')
-    }
-  ])
-  config.plugins.push(
+  config.optimization = {
+    minimize: true
+  }
+  config.plugins = [
+    ...config.plugins,
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      minimize: true,
-      compress: {
-        unused: true,
-        dead_code: true,
-        warnings: false
-      }
-    }),
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new ExtractPlugin('bundle.css'),
+    new ExtractTextPlugin('bundle.css'),
     new HtmlPlugin({
       appMountId: 'mount',
       title: 'React RangeSlider',
       template: 'docs/index.ejs'
     })
-  )
+  ]
 }
 
 module.exports = config

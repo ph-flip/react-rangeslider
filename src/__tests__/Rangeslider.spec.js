@@ -1,7 +1,10 @@
 import React from 'react'
-import { shallow, mount } from 'enzyme'
+import { configure, shallow, mount } from 'enzyme'
 import renderer from 'react-test-renderer'
 import Slider from '../Rangeslider'
+import Adapter from 'enzyme-adapter-react-16'
+
+configure({ adapter: new Adapter() })
 
 describe('Rangeslider specs', () => {
   it('should render properly', () => {
@@ -26,6 +29,7 @@ describe('Rangeslider specs', () => {
 
   it('should render basic slider with defaults', () => {
     const tree = renderer.create(<Slider />).toJSON()
+    // console.log('tree: ', tree)
     expect(tree).toMatchSnapshot()
   })
 
@@ -33,6 +37,7 @@ describe('Rangeslider specs', () => {
     const tree = renderer
       .create(<Slider min={10} max={50} value={20} />)
       .toJSON()
+    // console.log('tree: ', tree)
     expect(tree).toMatchSnapshot()
   })
 })
