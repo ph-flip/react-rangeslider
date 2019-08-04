@@ -1,6 +1,6 @@
 {
-  "name": "react-rangeslider",
-  "version": "2.2.0",
+  "name": "@appigram/react-rangeslider",
+  "version": "2.2.1",
   "description": "A lightweight react component that acts as a HTML5 input range slider polyfill",
   "main": "lib/index.js",
   "scripts": {
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/whoisandy/react-rangeslider.git"
+    "url": "https://github.com/appigram/react-rangeslider.git"
   },
   "files": [
     "lib",
@@ -45,76 +45,74 @@
     "slider"
   ],
   "author": {
-    "name": "Bhargav Anand",
-    "email": "rjn143@gmail.com",
-    "url": "github.com/whoisandy"
+    "name": "Eugene Sysmanov",
+    "email": "appigram@gmail.com",
+    "url": "github.com/appigram"
   },
   "engines": {
     "node": ">=4"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/whoisandy/react-rangeslider/issues"
+    "url": "https://github.com/appigram/react-rangeslider/issues"
   },
-  "homepage": "https://github.com/whoisandy/react-rangeslider#readme",
+  "homepage": "https://github.com/appigram/react-rangeslider#readme",
   "devDependencies": {
-    "babel": "^6.5.2",
-    "babel-cli": "^6.18.0",
-    "babel-core": "^6.14.0",
-    "babel-eslint": "^6.1.2",
-    "babel-jest": "^15.0.0",
-    "babel-loader": "^6.2.5",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-react": "^6.11.1",
-    "babel-preset-stage-0": "^6.5.0",
-    "babel-register": "^6.14.0",
-    "cpy-cli": "^1.0.1",
-    "cross-env": "^2.0.1",
-    "css-loader": "^0.25.0",
-    "del-cli": "^0.2.1",
-    "enzyme": "^2.4.1",
-    "eslint": "^3.5.0",
-    "eslint-config-standard": "^6.0.0",
-    "eslint-config-standard-jsx": "^3.0.0",
-    "eslint-config-standard-react": "^4.0.0",
-    "eslint-loader": "^1.0.0",
-    "eslint-plugin-import": "^1.14.0",
-    "eslint-plugin-prettier": "^2.3.1",
-    "eslint-plugin-promise": "^3.0.0",
-    "eslint-plugin-react": "^6.2.0",
-    "eslint-plugin-standard": "^2.0.0",
-    "express": "^4.13.4",
-    "extract-text-webpack-plugin": "^1.0.1",
-    "file-loader": "^0.11.1",
-    "gh-pages": "^0.11.0",
-    "highlight.js": "^9.9.0",
-    "html-webpack-plugin": "^2.22.0",
-    "jest": "^15.1.1",
-    "less": "^2.7.2",
-    "less-loader": "^2.2.3",
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "@babel/register": "^7.5.5",
+    "babel-eslint": "^10.0.2",
+    "babel-jest": "^24.8.0",
+    "babel-loader": "^8.0.6",
+    "cpy-cli": "^2.0.0",
+    "cross-env": "^5.2.0",
+    "css-loader": "^3.1.0",
+    "del-cli": "^2.0.0",
+    "enzyme": "^3.10.0",
+    "eslint": "^6.1.0",
+    "eslint-config-standard": "^13.0.1",
+    "eslint-config-standard-jsx": "^7.0.0",
+    "eslint-config-standard-react": "^8.0.0",
+    "eslint-loader": "^2.2.1",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-standard": "^4.0.0",
+    "express": "^4.17.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
+    "file-loader": "^4.1.0",
+    "gh-pages": "^2.1.0",
+    "highlight.js": "^9.15.9",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.8.0",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
     "less-plugin-clean-css": "^1.5.1",
-    "marked": "^0.3.6",
-    "opn-cli": "^3.1.0",
-    "prop-types": "^15.5.9",
-    "raw-loader": "^0.5.1",
+    "marked": "^0.7.0",
+    "opn-cli": "^5.0.0",
+    "prop-types": "^15.7.2",
+    "raw-loader": "^3.1.0",
     "react": "^15.3.1",
-    "react-addons-test-utils": "^15.3.1",
-    "react-dom": "^15.3.1",
-    "react-ga": "^2.2.0",
+    "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.8.6",
+    "react-ga": "^2.6.0",
     "react-github-button": "^0.1.11",
-    "react-test-renderer": "^15.5.4",
-    "style-loader": "^0.13.1",
-    "url-loader": "^0.5.8",
-    "webpack": "^1.13.0",
-    "webpack-dev-middleware": "^1.6.1",
-    "webpack-hot-middleware": "^2.10.0"
+    "react-test-renderer": "^16.8.6",
+    "style-loader": "^0.23.1",
+    "url-loader": "^2.1.0",
+    "webpack": "^4.39.1",
+    "webpack-dev-middleware": "^3.7.0",
+    "webpack-hot-middleware": "^2.25.0"
   },
   "dependencies": {
-    "classnames": "^2.2.3",
-    "resize-observer-polyfill": "^1.4.2"
+    "classnames": "^2.2.6",
+    "resize-observer-polyfill": "^1.5.1"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0"
+    "react": "^16.8.6"
   },
   "jest": {
     "moduleNameMapper": {
