@@ -1,7 +1,7 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const path = require('path')
 
-const config = {
+module.exports = {
   entry: path.join(__dirname, 'src', 'index'),
 
   output: {
@@ -29,7 +29,9 @@ const config = {
                 }
               ],
               // '@babel/preset-env', // https://goo.gl/aAxYAq
-              '@babel/preset-react' // https://goo.gl/4aEFV3
+              ['@babel/preset-react', {
+                runtime: 'automatic'
+              }] // https://goo.gl/4aEFV3
             ],
 
             // https://goo.gl/N9gaqc - List of Babel plugins.
@@ -43,12 +45,14 @@ const config = {
       {
         test: /\.less$/,
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader')
+        use: [MiniCssExtractPlugin.loader, 'css-loader!less-loader']
       }
     ]
   },
 
-  plugins: [new ExtractTextPlugin('RangeSlider.css')],
+  plugins: [new MiniCssExtractPlugin({
+    filename: 'RangeSlider.css'
+  })],
 
   externals: [
     {
@@ -61,5 +65,3 @@ const config = {
     }
   ]
 }
-
-module.exports = config
