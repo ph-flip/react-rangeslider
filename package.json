@@ -1,6 +1,6 @@
 {
   "name": "@appigram/react-rangeslider",
-  "version": "2.2.9",
+  "version": "2.2.10",
   "description": "A lightweight react component that acts as a HTML5 input range slider polyfill",
   "main": "lib/index.js",
   "scripts": {
