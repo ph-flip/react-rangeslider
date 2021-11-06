@@ -79,7 +79,7 @@ class Slider extends Component {
   handleFormat = value => {
     const { format } = this.props
     return format ? format(value) : value
-  };
+  }
 
   /**
    * Update slider state on change
@@ -99,7 +99,7 @@ class Slider extends Component {
       limit: sliderPos - handlePos,
       grab: handlePos / 2
     })
-  };
+  }
 
   /**
    * Attach event listeners to mousemove/mouseup events
@@ -117,7 +117,7 @@ class Slider extends Component {
         onChangeStart && onChangeStart(e)
       }
     )
-  };
+  }
 
   /**
    * Handle drag/mousemove event
@@ -141,7 +141,7 @@ class Slider extends Component {
     }
 
     onChange && onChange(value, e)
-  };
+  }
 
   /**
    * Detach event listeners to mousemove/mouseup events
@@ -159,7 +159,7 @@ class Slider extends Component {
     )
     document.removeEventListener('mousemove', this.handleDrag)
     document.removeEventListener('mouseup', this.handleEnd)
-  };
+  }
 
   /**
    * Support for key events on the slider handle
@@ -184,7 +184,7 @@ class Slider extends Component {
         onChange && onChange(sliderValue, e)
         break
     }
-  };
+  }
 
   /**
    * Calculate position of slider based on its value
@@ -200,7 +200,7 @@ class Slider extends Component {
     const pos = Math.round(percentage * limit)
 
     return pos
-  };
+  }
 
   /**
    * Translate position of slider to slider value
@@ -215,7 +215,7 @@ class Slider extends Component {
     const value = orientation === 'horizontal' ? baseVal + min : max - baseVal
 
     return clamp(value, min, max)
-  };
+  }
 
   /**
    * Calculate position of slider based on value
@@ -242,7 +242,7 @@ class Slider extends Component {
     const value = this.getValueFromPosition(pos)
 
     return value
-  };
+  }
 
   /**
    * Grab coordinates of slider
@@ -264,7 +264,7 @@ class Slider extends Component {
       handle: handlePos,
       label: handlePos
     }
-  };
+  }
 
   renderLabels = labels => (
     <ul
@@ -275,7 +275,7 @@ class Slider extends Component {
     >
       {labels}
     </ul>
-  );
+  )
 
   render () {
     const {
