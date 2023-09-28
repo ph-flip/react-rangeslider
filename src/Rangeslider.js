@@ -61,7 +61,7 @@ class Slider extends Component {
     super(props, context)
 
     this.state = {
-      active: defaultProps.persistTooltip,
+      active: props.persistTooltip,
       limit: 0,
       grab: 0
     }
