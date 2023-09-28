@@ -27,7 +27,7 @@
     "minor": "npm version minor && npm publish",
     "major": "npm version major && npm publish",
     "patch": "npm version patch && npm publish",
-    "postinstall": "npm run build"
+    "prepare": "npm run build"
   },
   "repository": {
     "type": "git",
