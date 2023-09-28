@@ -285,6 +285,7 @@ class Slider extends Component {
       orientation,
       className,
       tooltip,
+      persistTooltip,
       reverse,
       labels,
       min,
@@ -300,7 +301,7 @@ class Slider extends Component {
     const coords = this.coordinates(position)
     const fillStyle = { [dimension]: `${coords.fill}px` }
     const handleStyle = { [direction]: `${coords.handle}px` }
-    const showTooltip = tooltip && active || this.state.persistTooltip
+    const showTooltip = tooltip && active || persistTooltip
 
     const labelItems = []
     let labelKeys = Object.keys(labels)
