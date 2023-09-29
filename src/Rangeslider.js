@@ -35,6 +35,7 @@ class Slider extends Component {
     orientation: PropTypes.string,
     tooltip: PropTypes.bool,
     persistTooltip: PropTypes.bool,
+    descriptiveTooltip: PropTypes.object,
     reverse: PropTypes.bool,
     labels: PropTypes.object,
     handleLabel: PropTypes.string,
@@ -52,6 +53,7 @@ class Slider extends Component {
     orientation: 'horizontal',
     tooltip: true,
     persistTooltip: false,
+    descriptiveTooltip: {},
     reverse: false,
     labels: {},
     handleLabel: ''
@@ -286,6 +288,7 @@ class Slider extends Component {
       className,
       tooltip,
       persistTooltip,
+      descriptiveTooltip,
       reverse,
       labels,
       min,
@@ -370,7 +373,14 @@ class Slider extends Component {
               }}
               className='rangeslider__handle-tooltip'
             >
+              {descriptiveTooltip ?
+              <div>
+                <h1>{descriptiveTooltip.header}</h1>
+                <p>{descriptiveTooltip.content}</p>
+              </div>
+              :
               <span>{this.handleFormat(value)}</span>
+              }
             </div>}
           <div className='rangeslider__handle-label'>{handleLabel}</div>
         </div>
